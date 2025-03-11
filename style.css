@@ -1,5 +1,3 @@
-
-
 /*
  * Credits to the original card creator: htwarriors108 (HT WARRIORS).
  */
@@ -7,7 +5,7 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(24, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(24, 1fr);
   width: 90%;
   height: 80%;
   color: #fff;
@@ -21,36 +19,103 @@
 }
 
 .card::before {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(45deg, #00ff88, #006c3a);
+  background: linear-gradient(45deg, #b7f3d769, #006c3a68);
   border-radius: 1.2em;
 }
 
 .card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #00ff88, #006c3a); 
+  background: linear-gradient(45deg, #b7f3d769, #006c3a68);
   filter: blur(30px);
 }
 
-
 .card span::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 50%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/*
+ * Credits to the original button creator: Randdose.
+ */
+
+.button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  border: rgb(0, 50, 31) solid 0.15em;
+  border-radius: 0.25em;
+  color: rgb(0, 50, 31);
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border 300ms, color 300ms;
+  user-select: none;
+}
+
+.button p {
+  z-index: 1;
+}
+
+.button:hover {
+  color: #ffffff;
+}
+
+.button:active {
+  border-color: teal;
+}
+
+.button::after,
+.button::before {
+  content: "";
+  position: absolute;
+  width: 10em;
+  aspect-ratio: 1;
+  background: rgb(0, 50, 31);
+  opacity: 50%;
+  border-radius: 50%;
+  transition: transform 500ms, background 300ms;
+}
+
+.button::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+
+.button::after {
+  right: 0;
+  transform: translateX(8em);
+}
+
+.button:hover:before {
+  transform: translateX(-1em);
+}
+
+.button:hover:after {
+  transform: translateX(1em);
+}
+
+.button:active:before,
+.button:active:after {
+  background: teal;
 }
 
 @keyframes slideIn {
@@ -66,105 +131,171 @@
   color: rgba(0, 29, 7, 0.884);
   font-size: 4rem;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 5%;
   animation: slideIn 1.5s ease-out forwards, scale 2s ease 1.5s;
 }
 
-#logo{
+#logo {
   position: relative;
   z-index: 3;
   width: 300px;
-  padding: 20px
-}
-
-nav{
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  z-index: 3;
-  font-weight: bold;
-  font-size: larger;
   padding: 20px;
 }
 
-nav a {
-  color: white; 
-  text-decoration: none; 
+#presentation {
+  z-index: 3;
+  p{
+    text-align: justify;
+    font-weight: bold;
+  }
 }
 
-#presentation{
+.articles-section {
+  z-index: 3;
+}
+.button-container {
   z-index: 3;
 }
 
-.articles-section{
+#profile-photo {
   z-index: 3;
-}
-.button-container{
-  z-index: 3;
+  grid-column: 22 / 24;
+  grid-row: 2 / 5;
+  height: 100px;
+  width: 100px;
 }
 
-@media (width < 550px) { 
+#no-luck {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  h2 {
+    color: black;
+    text-align: center;
+  }
+  article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  img {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media (width < 550px) {
+  body{
+    margin: 0;
+  }
+  #profile-photo {
+    grid-column: 15 / 24;
+    grid-row: 2 / 5;
+    height: 100px;
+    width: 100px;
+  }
   #title_cv {
     color: rgba(0, 29, 7, 0.884);
     font-size: 2rem;
     text-align: center;
+  }
+  #logo {
+    grid-column: 2 / 23;
+    grid-row: 4 / 6;
+  }
+  #presentation {
+    grid-column: 2 / 23;
+    grid-row: 6 / 8;
+  }
+  .articles-section {
+    grid-column: 2 / 23;
+    grid-row: 8 / 12;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    grid-column: 1 / 25;
+    grid-row: 12 / 15;
+  }
+  .say-it {
+    display: none;
+  }
 
+  #no-luck {
+    grid-column: 2 / 23;
+    grid-row: 15 / 25;
   }
-  #logo{
-   grid-column: 2 / 23;
-   grid-row: 1;
-  }
-  nav{
-    grid-column:  2 / 23;
-    grid-row: 2;
-  }
-  #presentation{
-    grid-column:  2 / 23;
-    grid-row: 3;
-  }
-  .articles-section{
-    grid-column:  2 / 23;
-    grid-row: 4;
-  }
-  .button-container{
-    grid-column:  2 / 12;
-    grid-row: 5;
-  }
+  
 }
 
 @media (550px <= width <= 1024px) {
-  #logo{
-    grid-column: 2 / 12;
-    grid-row: 2;
+  #logo {
+    grid-column: 2 / 22;
+    grid-row: 3 / 5;
   }
-
-  nav{
-    grid-column:  2 / span 22;
-    grid-row: 1;
+  #presentation {
+    grid-column: 2 / 23;
+    grid-row: 5 / 7;
   }
-  #presentation{
-    grid-column:  2 / 12;
-    grid-row: 3;
+  .articles-section {
+    display: flex;
+    grid-column: 2 / 23;
+    grid-row: 7 / 8;
   }
-
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 1 / 25;
+    grid-row: 8 / 10;
+  }
+  .say-it {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / 25;
+    grid-row: 10 / 15;
+  }
+  #no-luck {
+    grid-column: 1 / 25;
+    grid-row: 15 / 25;
+  }
 }
-
 
 @media (width > 1024px) {
-  #logo{
-    grid-column: 2 / 12;
-    grid-row: 2;
+  #logo {
+    grid-column: 1 / 8;
+    grid-row: 4 / 9;
   }
-  nav{
-    justify-content: space-between;
-    grid-column:  6 / 18;
-    grid-row: 1;
+  #presentation {
+    grid-column: 2 / 8;
+    grid-row: 9 / 14;
   }
-  #presentation{
-    grid-column:  2 / 12;
-    grid-row: 3;
+  .articles-section {
+    display: flex;
+    grid-column: 2 / 8;
+    grid-row: 14 / 19;
   }
-
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 1 / 8;
+    grid-row: 19 / 25;
+  }
+  .say-it {
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    grid-column: 8 / 17;
+    grid-row: 2 / 24;
+  }
+  #no-luck {
+    grid-column: 17 / 25;
+    grid-row: 5 / 25;
+  }
 }
-
-
